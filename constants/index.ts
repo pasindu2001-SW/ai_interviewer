@@ -187,6 +187,7 @@ export const feedbackSchema = z.object({
   strengths: z.array(z.string()),
   areasForImprovement: z.array(z.string()),
   finalAssessment: z.string(),
+  hireDecision: z.enum(["hire", "no-hire"]),
 });
 
 export const interviewCovers = [

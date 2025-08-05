@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation';
-import React, { use } from 'react'
+import React from 'react'
 import { getInterviewsById } from '@/lib/actions/general.action';
 import Image from 'next/image';
 import { getRandomInterviewCover } from '@/lib/utils';
@@ -30,8 +30,8 @@ const page = async ({ params } : RouteParams) => {
     </div>
 
     <Agent 
-        userName={user?.name}
-        type={user?.id}
+        userName={user?.name || ''}
+        userId={user?.id || ''}
         interviewId={id}
         type="interview"
         questions={interview.questions}
