@@ -3,11 +3,11 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+
 import { cn } from "@/lib/utils";
 import { vapi } from "@/lib/vapi.sdk";
 import { interviewer } from "@/constants";
 import { createFeedback } from "@/lib/actions/general.action";
-
 
 enum CallStatus {
   INACTIVE = "INACTIVE",
@@ -61,9 +61,9 @@ const Agent = ({
       setIsSpeaking(false);
     };
 
-    const onError = (error: unknown) => {
-      console.error("Error:", JSON.stringify(error, null, 2));
-};
+    const onError = (error: Error) => {
+      console.log("Error:", error);
+    };
 
     vapi.on("call-start", onCallStart);
     vapi.on("call-end", onCallEnd);
@@ -139,7 +139,6 @@ const Agent = ({
       });
     }
   };
-
 
   const handleDisconnect = () => {
     setCallStatus(CallStatus.FINISHED);
